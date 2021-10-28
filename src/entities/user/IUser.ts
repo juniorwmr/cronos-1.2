@@ -6,10 +6,12 @@ export interface IUser {
   name: string;
   email: string;
   cpf: string;
+  education: string;
+  pisPasep: string;
   birthDate: Date;
   genre: Genre;
   phone: string;
   active?: boolean;
-  created_at?: Date;
-  updated_at?: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }

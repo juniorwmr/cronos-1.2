@@ -36,10 +36,23 @@ export abstract class User {
   })
   cpf: string;
 
+  @Column({
+    nullable: true,
+  })
+  education: string;
+
+  @Column({
+    name: 'pis_pasep',
+    nullable: true,
+    unique: true,
+  })
+  pisPasep: string;
+
   @Transform(({ value }) =>
     value ? value.toString().split('-').reverse().join('/') : null,
   )
   @Column({
+    name: 'birth_date',
     type: 'date',
     nullable: true,
   })
@@ -63,9 +76,13 @@ export abstract class User {
   })
   genre?: Genre;
 
-  @CreateDateColumn()
-  created_at?: Date;
+  @CreateDateColumn({
+    name: 'created_at',
+  })
+  createdAt?: Date;
 
-  @UpdateDateColumn()
-  updated_at?: Date;
+  @UpdateDateColumn({
+    name: 'updated_at',
+  })
+  updatedAt?: Date;
 }

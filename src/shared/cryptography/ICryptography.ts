@@ -1,7 +1,6 @@
 export interface IUserPayload {
   user: {
     id: string;
-    type: string;
   };
 }
 

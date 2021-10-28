@@ -6,4 +6,6 @@ export interface CreateEmployeeDTO {
   birthDate: Date;
   phone: string;
   genre: number;
+  pisPasep: string;
+  education: string;
 }
