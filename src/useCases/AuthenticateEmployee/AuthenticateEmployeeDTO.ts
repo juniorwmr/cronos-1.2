@@ -8,5 +8,4 @@ export interface AuthenticateEmployeeRequestDTO {
 export interface IAuthenticateEmployeeResponseDTO {
   user: Employee;
   accessToken: string;
-  refreshToken: string;
 }

@@ -6,8 +6,10 @@ import { authRoutes } from './auth.routes';
 import { employeesRoutes } from './employees.routes';
 const routes = Router();
 
-routes.use('/auth', authRoutes);
+routes.get('/', (req, res) => res.send('Hello World!'));
+// routes.use('/auth', authRoutes);
 routes.use('/employees', employeesRoutes);
+
 // routes.use(
 //   '/companies',
 //   async (request: Request, response: Response, next: NextFunction) =>

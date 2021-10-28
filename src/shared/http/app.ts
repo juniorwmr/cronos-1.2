@@ -1,5 +1,5 @@
-import 'dotenv/config';
 import 'module-alias/register';
+import 'reflect-metadata';
 import 'express-async-errors';
 
 import express from 'express';
@@ -8,7 +8,6 @@ import errorHandler from '@shared/errors/handler';
 import { errors as celebrateErrors } from 'celebrate';
 
 import { routes } from './routes';
-import '../mongoose/index';
 
 class App {
   public express = express();

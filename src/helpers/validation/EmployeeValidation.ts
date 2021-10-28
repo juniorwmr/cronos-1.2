@@ -8,6 +8,10 @@ class EmployeeValidation {
         email: Joi.string().email().required(),
         password: Joi.string().required(),
         type: Joi.number().min(1).max(2),
+        cpf: Joi.string().required(),
+        birthDate: Joi.date().required(),
+        genre: Joi.number().required(),
+        phone: Joi.string().required(),
       },
     });
   }

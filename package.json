@@ -1,15 +1,14 @@
 {
-  "name": "salonshop-api",
+  "name": "cronos-1.2",
   "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "start": "node -r ./prod-paths.js ./dist/shared/http/typeorm/index.js",
     "build": "tsc -p .",
-    "start": "node ./build/shared/http/server.js",
-    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn ./src/shared/http/server.ts",
-    "test": "echo \"Error: no test specified\" &amp;&amp; exit 1",
-    "lint": "eslint . --ext .ts",
-    "lint-fix": "eslint . --ext .ts --fix"
+    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules ./src/shared/typeorm/index.ts",
+    "typeorm": "ts-node -r tsconfig-paths/register --project tsconfig.json ./node_modules/typeorm/cli.js",
+    "test": "jest --passWithNoTests --runInBand --no-cache"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
@@ -59,17 +58,9 @@
     "pg": "^8.7.0",
     "rate-limiter-flexible": "^2.2.4",
     "redis": "^3.1.2",
+    "reflect-metadata": "^0.1.13",
     "regis": "^0.0.0",
+    "typeorm": "^0.2.38",
     "uuid": "^8.3.2"
-  },
-  "_moduleAliases": {
-    "@config": "build/config",
-    "@middlewares": "build/middlewares",
-    "@shared": "build/shared",
-    "@entities": "build/entities",
-    "@repositories": "build/repositories",
-    "@useCases": "build/useCases",
-    "@database": "build/database",
-    "@helpers": "build/helpers"
   }
 }

@@ -1,7 +1,6 @@
 import { AppError } from '@shared/errors/AppError';
 import { Employee } from '@entities/user';
 import { IEmployeeRepository } from '@repositories/IEmployeeRepository';
-import { IRefreshTokenRepository } from '@repositories/IRefreshTokenRepository';
 import {
   AuthenticateEmployeeRequestDTO,
   IAuthenticateEmployeeResponseDTO,
@@ -14,10 +13,8 @@ import {
 export class AuthenticateEmployeeUseCase {
   constructor(
     private employeeRepository: IEmployeeRepository,
-    private refreshTokenRepository: IRefreshTokenRepository,
     private cryptographyBcrypt: ICryptographyBcrypt,
     private cryptographyJWT: ICryptographyJWT,
-    private cryptographyJWTRefreshToken: ICryptographyJWT,
   ) {}
 
   async execute({
@@ -50,25 +47,13 @@ export class AuthenticateEmployeeUseCase {
 
     const accessToken = await this.cryptographyJWT.encrypt(payload);
 
-    const refreshToken = await this.cryptographyJWTRefreshToken.encrypt(
-      payload,
-    );
-
     const expiredAt = new Date();
 
     expiredAt.setSeconds(expiredAt.getSeconds() + 86400);
 
-    await this.refreshTokenRepository.save({
-      token: refreshToken,
-      user_type: employeeAlreadyExists.type,
-      user: employeeAlreadyExists.id as string,
-      expiry_date: expiredAt,
-    });
-
     return {
       user: employeeAlreadyExists,
       accessToken,
-      refreshToken,
     };
   }
 }
