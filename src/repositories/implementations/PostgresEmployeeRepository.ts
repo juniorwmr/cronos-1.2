@@ -7,33 +7,23 @@ export class PostgresEmployeeRepository implements IEmployeeRepository {
   constructor(private employeesRepository: Repository<Employee>) {}
 
   async findByEmail(email: string): Promise<Employee | null> {
-    const employee = await this.employeesRepository.findOne({ email });
-
-    return employee;
+    return await this.employeesRepository.findOne({ email });
   }
 
   async findByCPF(cpf: string): Promise<Employee | null> {
-    const employee = await this.employeesRepository.findOne({ cpf });
-
-    return employee;
+    return await this.employeesRepository.findOne({ cpf });
   }
 
   async saveEmployee(data: Employee): Promise<Employee> {
     const newEmployee = this.employeesRepository.create(data);
-    const employee = await this.employeesRepository.save(newEmployee);
-
-    return employee;
+    return await this.employeesRepository.save(newEmployee);
   }
 
   async find(): Promise<Employee[]> {
-    const employees = await this.find();
-
-    return employees;
+    return await this.employeesRepository.find();
   }
 
   async findById(id: string): Promise<Employee | null> {
-    const employee = await this.employeesRepository.findOne(id);
-
-    return employee;
+    return await this.employeesRepository.findOne(id);
   }
 }

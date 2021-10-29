@@ -18,7 +18,7 @@ export class CreateEmployeeController {
       pisPasep,
       education,
     } = request.body;
-    const user = await this.createEmployeeUseCase.execute({
+    const newUser = await this.createEmployeeUseCase.execute({
       password,
       name,
       email,
@@ -30,6 +30,6 @@ export class CreateEmployeeController {
       education,
     });
 
-    return response.status(201).json(classToClass(user));
+    return response.status(201).json(classToClass(newUser));
   }
 }

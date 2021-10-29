@@ -17,7 +17,7 @@ export class CreateEmployeeUseCase {
     );
 
     if (employeeAlreadyExists) {
-      throw new AppError('Employee already exists.', 404);
+      throw new AppError('Employee already exists.', 400);
     }
 
     const passwordHash = await this.cryptographyBcrypt.hash(data.password);

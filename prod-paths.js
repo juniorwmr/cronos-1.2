@@ -11,6 +11,7 @@ moduleAlias.addAliases({
   '@useCases': `${__dirname}/build/useCases`,
   '@database': `${__dirname}/build/database`,
   '@helpers': `${__dirname}/build/helpers`,
+  '@utils': `${__dirname}/build/utils`,
 });
 
 //

@@ -26,7 +26,8 @@
       "@middlewares/*": ["middlewares/*"],
       "@useCases/*": ["useCases/*"],
       "@database/*": ["database/*"],
-      "@helpers/*": ["helpers/*"]
+      "@helpers/*": ["helpers/*"],
+      "@utils/*": ["utils/*"]
     }
   },
   "exclude": ["node_modules", "src/database/migrations"]
