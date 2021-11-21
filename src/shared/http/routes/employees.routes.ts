@@ -1,14 +1,10 @@
 import { Router, Request, Response } from 'express';
-import { createUserController } from '@useCases/CreateEmployee';
-import EmployeeValidation from '@helpers/validation/EmployeeValidation';
+import { authenticateEmployeeController } from '@useCases/AuthenticateEmployee';
 
 const employeesRoutes = Router();
 
-employeesRoutes.post(
-  '/',
-  EmployeeValidation.create(),
-  (request: Request, response: Response) =>
-    createUserController.handle(request, response),
+employeesRoutes.post('/auth', (request: Request, response: Response) =>
+  authenticateEmployeeController.handle(request, response),
 );
 
 export { employeesRoutes };

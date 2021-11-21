@@ -1,9 +1,9 @@
 import 'module-alias/register';
-import 'reflect-metadata';
 import 'express-async-errors';
 
 import express from 'express';
 import cors from 'cors';
+import morgan from 'morgan';
 import errorHandler from '@shared/errors/handler';
 import { errors as celebrateErrors } from 'celebrate';
 
@@ -21,6 +21,7 @@ class App {
   private middlewares(): void {
     this.express.use(express.json());
     this.express.use(cors());
+    this.express.use(morgan('common'));
   }
 
   private router(): void {

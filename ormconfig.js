@@ -2,7 +2,6 @@ module.exports = [
   {
     name: 'production',
     type: 'postgres',
-    driver: 'pg',
     host: process.env.TYPEORM_HOST,
     port: process.env.TYPEORM_PORT,
     username: process.env.TYPEORM_USERNAME,
@@ -17,7 +16,6 @@ module.exports = [
   {
     name: 'development',
     type: 'postgres',
-    driver: 'pg',
     host: process.env.TYPEORM_HOST,
     port: process.env.TYPEORM_PORT,
     username: process.env.TYPEORM_USERNAME,

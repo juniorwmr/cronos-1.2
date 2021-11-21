@@ -8,10 +8,10 @@ export class AuthenticateEmployeeController {
   ) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const { email, password } = request.body;
+    const { cpf, password } = request.body;
 
     const user = await this.authenticateEmployeeUseCase.execute({
-      email,
+      cpf,
       password,
     });
 

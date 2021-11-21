@@ -20,8 +20,8 @@ const createEmployeeUseCase = new CreateEmployeeUseCase(
   bcrypt,
 );
 
-const createUserController = new CreateEmployeeController(
+const createEmployeeController = new CreateEmployeeController(
   createEmployeeUseCase,
 );
 
-export { createEmployeeUseCase, createUserController };
+export { createEmployeeUseCase, createEmployeeController };

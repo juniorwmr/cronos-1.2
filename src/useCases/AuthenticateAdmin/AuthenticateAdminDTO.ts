@@ -1,4 +1,4 @@
-import { Employee } from '@entities/user';
+import { Administrator } from '@entities/user';
 
 export interface AuthenticateEmployeeRequestDTO {
   cpf: string;
@@ -6,6 +6,6 @@ export interface AuthenticateEmployeeRequestDTO {
 }
 
 export interface IAuthenticateEmployeeResponseDTO {
-  user: Employee;
+  user: Administrator;
   accessToken: string;
 }

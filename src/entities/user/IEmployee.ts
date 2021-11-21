@@ -4,4 +4,5 @@ import { IUser } from './IUser';
 
 export interface IEmployee extends IUser {
   contracts: IContract[];
+  type: string;
 }

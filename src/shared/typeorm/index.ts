@@ -1,18 +1,17 @@
+import 'reflect-metadata';
 import 'dotenv/config';
-import { createConnection, getConnectionOptions } from 'typeorm';
+import { Connection, createConnection, getConnectionOptions } from 'typeorm';
 
 const { NODE_ENV } = process.env;
-
-const Connection = async () => {
+const PostgresConnection = async (name?: string): Promise<Connection> => {
   const connectionOptions = await getConnectionOptions(
-    NODE_ENV || 'production',
+    name || NODE_ENV || 'production',
   );
-  createConnection({ ...connectionOptions, name: 'default' } as any).then(
-    () => {
-      console.log('Connected to the database.');
-      import('../http/server');
-    },
-  );
+  const connection = await createConnection({
+    ...connectionOptions,
+    name: 'default',
+  });
+  return connection;
 };
 
-export default Connection();
+export default PostgresConnection;

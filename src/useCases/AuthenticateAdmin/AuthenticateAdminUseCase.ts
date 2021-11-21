@@ -1,18 +1,18 @@
 import { AppError } from '@shared/errors/AppError';
-import { Employee } from '@entities/user';
-import { IEmployeeRepository } from '@repositories/IEmployeeRepository';
+import { Administrator } from '@entities/user';
+import { IAdminRepository } from '@repositories/IAdminRepository';
 import {
   AuthenticateEmployeeRequestDTO,
   IAuthenticateEmployeeResponseDTO,
-} from './AuthenticateEmployeeDTO';
+} from './AuthenticateAdminDTO';
 import {
   ICryptographyBcrypt,
   ICryptographyJWT,
 } from '@shared/cryptography/ICryptography';
 
-export class AuthenticateEmployeeUseCase {
+export class AuthenticateAdminUseCase {
   constructor(
-    private employeeRepository: IEmployeeRepository,
+    private adminRepository: IAdminRepository,
     private cryptographyBcrypt: ICryptographyBcrypt,
     private cryptographyJWT: ICryptographyJWT,
   ) {}
@@ -21,16 +21,18 @@ export class AuthenticateEmployeeUseCase {
     cpf,
     password,
   }: AuthenticateEmployeeRequestDTO): Promise<IAuthenticateEmployeeResponseDTO> {
-    const employeeAlreadyExists = (await this.employeeRepository.findByCPF(
+    const adminAlreadyExists = (await this.adminRepository.findByCPF(
       cpf,
-    )) as Employee;
-    if (!employeeAlreadyExists) {
+    )) as Administrator;
+
+    if (!adminAlreadyExists) {
       throw new AppError("User doesn't already exists.", 404);
     }
+    console.log(adminAlreadyExists);
 
     const passwordMatch = await this.cryptographyBcrypt.compare(
       password,
-      employeeAlreadyExists.password,
+      adminAlreadyExists.password,
     );
 
     if (!passwordMatch) {
@@ -39,7 +41,7 @@ export class AuthenticateEmployeeUseCase {
 
     const payload = {
       user: {
-        id: employeeAlreadyExists.id as string,
+        id: adminAlreadyExists.id as string,
       },
     };
 
@@ -50,7 +52,7 @@ export class AuthenticateEmployeeUseCase {
     expiredAt.setSeconds(expiredAt.getSeconds() + 86400);
 
     return {
-      user: employeeAlreadyExists,
+      user: adminAlreadyExists,
       accessToken,
     };
   }
