@@ -6,5 +6,5 @@ export class Administrator extends User {
   @Column({
     default: 'admin',
   })
-  type: 'admin';
+  type: string;
 }

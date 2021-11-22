@@ -8,4 +8,5 @@ export interface CreateEmployeeDTO {
   genre: number;
   pisPasep: string;
   education: string;
+  type: string;
 }

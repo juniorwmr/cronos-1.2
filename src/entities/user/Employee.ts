@@ -10,5 +10,5 @@ export class Employee extends User {
   @Column({
     default: 'employee',
   })
-  type: 'employee';
+  type: string;
 }
