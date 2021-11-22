@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node -r ./prod-paths.js ./dist/shared/http/server.js",
+    "start": "node -r ./prod-paths.js ./build/shared/http/server.js",
     "build": "tsc -p .",
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules ./src/shared/http/server.ts",
     "typeorm": "ts-node -r tsconfig-paths/register --project tsconfig.json ./node_modules/typeorm/cli.js",
