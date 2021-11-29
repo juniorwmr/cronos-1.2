@@ -19,7 +19,7 @@ export class CreateEmployeeController {
     } = request.body;
     const newContract = await this.createContractUseCase.execute({
       registration,
-      admission: handlePostgresDate(admission),
+      admission,
       city,
       type,
       situation,

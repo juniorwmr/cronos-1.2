@@ -4,6 +4,7 @@ class EmployeeValidation {
   create() {
     return celebrate({
       [Segments.BODY]: {
+        id: Joi.string().uuid().allow(''),
         name: Joi.string().required(),
         email: Joi.string().email().required(),
         password: Joi.string().required(),

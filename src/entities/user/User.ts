@@ -4,7 +4,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Exclude, Transform } from 'class-transformer';
+import { Exclude } from 'class-transformer';
 
 export enum Genre {
   male = 1,
@@ -48,9 +48,6 @@ export abstract class User {
   })
   pisPasep: string;
 
-  @Transform(({ value }) =>
-    value ? value.toString().split('-').reverse().join('/') : null,
-  )
   @Column({
     name: 'birth_date',
     type: 'date',

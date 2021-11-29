@@ -19,6 +19,10 @@ export class PostgresEmployeeRepository implements IEmployeeRepository {
     return await this.employeesRepository.save(newEmployee);
   }
 
+  async updateEmployee(employee: Employee): Promise<Employee> {
+    return await this.employeesRepository.save(employee);
+  }
+
   async find(): Promise<Employee[]> {
     return await this.employeesRepository.find();
   }

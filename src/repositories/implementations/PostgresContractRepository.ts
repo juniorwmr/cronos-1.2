@@ -24,7 +24,7 @@ export class PostgresContractRepository implements IContractRepository {
     });
   }
   async find(): Promise<Contract[]> {
-    return await this.contractRepository.find();
+    return await this.contractRepository.find({ relations: ['employee'] });
   }
 
   async findById(id: string): Promise<Contract | null> {

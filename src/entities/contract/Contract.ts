@@ -29,9 +29,6 @@ export class Contract {
   @Column()
   registration: string;
 
-  @Transform(({ value }) =>
-    value ? value.toString().split('-').reverse().join('/') : null,
-  )
   @Column({
     type: 'date',
     nullable: false,
